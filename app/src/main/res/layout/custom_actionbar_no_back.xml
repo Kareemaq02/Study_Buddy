@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/purple_700">
+
+    <RelativeLayout android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="3dp">
+
+        <TextView
+                android:layout_centerVertical="true"
+                android:id="@+id/action_bar_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Majors"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="3dp"
+
+                android:textSize="24dp"
+                android:textColor="@color/white"
+                android:textStyle="normal"/>
+
+
+    </RelativeLayout>
+
+</RelativeLayout>

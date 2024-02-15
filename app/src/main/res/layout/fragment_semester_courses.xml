@@ -1,0 +1,35 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <include
+            android:id="@+id/customActionBar"
+            layout="@layout/customactionbar"/>
+
+    <!-- RecyclerView -->
+    <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/semesterRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/customActionBar"
+            android:layout_above="@id/addStudyPlan"
+            android:scrollbars="vertical"/>
+
+    <!-- Floating Action Button -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/addStudyPlan"
+            android:layout_width="66dp"
+            android:layout_height="75dp"
+            app:maxImageSize="20dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="50dp"
+            android:src="@drawable/plus_svgrepo_com"
+            android:tint="@color/white"
+            android:backgroundTint="@color/purple_300"/>
+
+</RelativeLayout>

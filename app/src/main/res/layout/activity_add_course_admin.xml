@@ -1,0 +1,98 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical">
+
+    <include
+            layout="@layout/customactionbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/include"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+            android:id="@+id/titleTextView"
+            android:layout_width="match_parent"
+            android:layout_height="83dp"
+            android:text="Add New Course"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:padding="16dp"
+    />
+
+    <TextView
+            android:layout_marginBottom="5dp"
+            android:text="Major:"
+            android:textColor="@color/black"
+            android:layout_marginStart="5dp"
+            android:textSize="20dp"
+            android:layout_width="91dp"
+            android:layout_height="wrap_content" android:id="@+id/textView8"/>
+    <Spinner
+            android:layout_width="246dp"
+            android:layout_height="37dp" android:id="@+id/spinner2"
+            android:layout_marginStart="0dp"
+            android:background="@drawable/spinner_border" />
+    <TextView
+            android:layout_marginBottom="5dp"
+            android:text="Course:"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:layout_marginStart="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:id="@+id/textView9"/>
+    <Spinner
+            android:layout_width="247dp"
+            android:layout_height="37dp"
+            android:id="@+id/spinner3"
+            android:background="@drawable/spinner_border"/>
+    <TextView
+            android:id="@+id/courseCodeEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Course Code"
+            android:padding="16dp"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+                />
+
+    <TextView
+            android:id="@+id/courseNameEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Course Name"
+            android:padding="16dp"
+            android:textColor="@color/black"
+            android:textSize="20dp"/>
+    <TextView
+            android:id="@+id/descriptionEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Description"
+            android:padding="16dp"
+            android:inputType="textMultiLine"
+            android:minLines="3"
+            android:maxLines="6"
+            android:textColor="@color/black"
+            android:textSize="20dp"/>
+
+    <Button
+            android:id="@+id/managePrerequisitesButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Manage Prerequisites"
+            android:padding="16dp"
+            android:backgroundTint="@color/purple_700"
+            android:textColor="@color/white"/>
+
+    <Button
+            android:id="@+id/addCourseButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Add Course"
+            android:padding="16dp"
+            android:backgroundTint="@color/purple_700"
+            android:textColor="@color/white"/>
+
+</LinearLayout>

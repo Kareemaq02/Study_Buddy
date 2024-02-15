@@ -1,0 +1,30 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <include layout="@layout/customactionbar"/>
+    <!-- ListView -->
+
+    <!-- Floating Action Button -->
+    <ListView
+            android:id="@+id/studyplanListView2"
+            android:layout_width="match_parent"
+            android:layout_height="675dp"
+            android:scrollbars="vertical"
+            android:layout_marginTop="56dp" android:layout_alignParentTop="true" android:layout_alignParentStart="true"
+            android:layout_marginStart="0dp"/>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/addStudyPlan"
+            android:layout_width="66dp"
+            android:layout_height="75dp"
+            app:maxImageSize="20dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/plus_svgrepo_com"
+            android:layout_marginTop="16dp" android:layout_marginStart="16dp" android:layout_marginEnd="16dp"
+            android:layout_marginBottom="50dp"
+            android:tint="@color/white"
+            android:backgroundTint="@color/purple_300"
+    />
+
+
+</RelativeLayout>

@@ -1,0 +1,13 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Background with border -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@android:color/white" /> <!-- Set the desired background color -->
+            <stroke android:color="@android:color/black" /> <!-- Set the desired border color -->
+            <corners android:radius="8dp" /> <!-- Set the desired border radius -->
+        </shape>
+    </item>
+    <!-- Default spinner arrow -->
+    <item android:drawable="@drawable/baseline_arrow_drop_down_24"
+          android:gravity="end|center_vertical" />
+</layer-list>

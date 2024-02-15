@@ -1,0 +1,99 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical">
+
+    <include
+            layout="@layout/customactionbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/include"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+            android:id="@+id/titleTextView"
+            android:layout_width="match_parent"
+            android:layout_height="83dp"
+            android:text="Course Info"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:padding="16dp"
+            android:textStyle="bold"
+    />
+
+    <TextView
+            android:layout_marginBottom="5dp"
+            android:text="Major:"
+            android:textColor="@color/black"
+            android:layout_marginStart="5dp"
+            android:textSize="20dp"
+            android:layout_width="91dp"
+            android:layout_height="wrap_content" android:id="@+id/majorNameTextView"
+            android:textStyle="bold"/>
+    <TextView
+            android:id="@+id/majorName"
+            android:layout_width="262dp"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:layout_marginStart="170dp"
+    />
+    <TextView
+            android:layout_marginBottom="5dp"
+            android:text="Course Code:"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:layout_marginStart="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:id="@+id/textView9"
+            android:textStyle="bold"/>
+
+    <TextView
+            android:id="@+id/courseCode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:layout_marginStart="170dp"
+    />
+    <TextView
+            android:layout_marginBottom="5dp"
+            android:text="Course Name:"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:layout_marginStart="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:id="@+id/textView11"
+            android:textStyle="bold"/>
+    <TextView
+            android:id="@+id/courseName3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:layout_marginStart="170dp"/>
+    <TextView
+            android:layout_marginBottom="5dp"
+            android:text="Course Description:"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:layout_marginStart="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:id="@+id/textView12"
+            android:textStyle="bold"/>
+    <TextView
+            android:id="@+id/courseDescription"
+            android:layout_width="match_parent"
+            android:layout_height="147dp"
+            android:padding="16dp"
+            android:minLines="3"
+            android:maxLines="6"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:layout_marginTop="10dp"/>
+
+</LinearLayout>

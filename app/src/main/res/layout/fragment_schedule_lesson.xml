@@ -1,0 +1,122 @@
+<ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+        <Spinner
+                android:id="@+id/spinnerMajorReq"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="16dp"
+                android:prompt="@string/select_major_prompt"
+                android:spinnerMode="dropdown"
+                android:background="@drawable/spinner_border"/>
+
+        <Spinner
+                android:id="@+id/spinnerCoursesReq"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="16dp"
+                android:prompt="@string/select_course_prompt"
+                android:spinnerMode="dropdown"
+                android:background="@drawable/spinner_border"/>
+
+        <Button
+                android:id="@+id/etDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="JAN 01 2020"
+                android:textSize="20sp"
+                style="?android:spinnerStyle"
+                android:background="@drawable/spinner_border"
+                android:paddingLeft="5dp"/>
+
+        <Button
+                android:id="@+id/btnTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                style="?android:spinnerStyle"
+                android:background="@drawable/spinner_border"
+                android:layout_marginTop="5dp"
+                android:text="Select Time"
+                android:paddingLeft="5dp"/>
+
+        <TextView
+                android:text="Duration:"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView13"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+        android:layout_marginTop="10dp"/>
+
+        <Spinner
+                android:id="@+id/spinnerDuration"
+                android:layout_width="186dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="16dp"
+                android:hint="Lesson Duration (in hours)"
+                android:inputType="number"
+                android:background="@drawable/spinner_border"/>
+
+        <TextView
+                android:text="Maximum number of students:"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView14"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+        android:layout_marginTop="10dp"/>
+
+        <Spinner
+                android:id="@+id/spinnerLimit"
+                android:layout_width="185dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="16dp"
+                android:inputType="number"
+                android:background="@drawable/spinner_border"/>
+
+        <EditText
+                android:id="@+id/etPlace"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:hint="Place" android:minHeight="48dp"/>
+
+        <EditText
+                android:id="@+id/lessonDescription"
+                android:layout_width="match_parent"
+                android:layout_height="134dp"
+                android:layout_marginTop="10dp"
+                android:inputType="textMultiLine|textPersonName"
+                android:hint="Write some information about the lesson"
+                android:ems="10"
+                android:background="@drawable/custom_edit_text"
+                android:gravity="top|start"
+                android:paddingTop="10dp"
+                android:paddingStart="15dp"
+                android:paddingEnd="10dp"
+                android:maxLines="3"
+                android:singleLine="false"/>
+
+        <Button
+                android:id="@+id/btnScheduleClass"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:text="Schedule Class"
+                android:backgroundTint="@color/purple_700"
+                android:textColor="@android:color/white"/>
+
+    </LinearLayout>
+
+</ScrollView>

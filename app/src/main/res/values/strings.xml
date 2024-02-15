@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Study Buddy</string>
+    <string-array name="spinner_items">
+        <item>Computer Science</item>
+        <item>Computer Engineering</item>
+    </string-array>
+    <string-array name="semester_options">
+        <item>First</item>
+        <item>Second</item>
+        <item>Summer</item>
+    </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="majors">Majors</string>
+    <string name="selected_item"/>
+    <string name="select_major_prompt"/>
+    <string name="select_course_prompt"/>
+    <string name="year">Year</string>
+    <string name="courses">Courses</string>
+</resources>

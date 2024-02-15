@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+                                                   android:layout_height="match_parent"
+                                                   android:background="@android:color/white"
+                                                   android:textColor="@android:color/black"
+>
+
+
+    <TextView
+            android:text="Add Semester Info"
+            android:layout_width="284dp"
+            android:textSize="32dp"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:layout_height="63dp" android:id="@+id/textView4"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.496" app:layout_constraintVertical_bias="0.103"/>
+    <TextView
+            android:text="Chose The Semester"
+            android:textSize="24dp"
+            android:layout_width="306dp"
+            android:layout_height="29dp" android:id="@+id/textView5"
+            app:layout_constraintTop_toTopOf="parent"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.152"
+            app:layout_constraintVertical_bias="0.361"/>
+    <Spinner
+            android:layout_width="296dp"
+            android:layout_height="65dp" android:id="@+id/SemesterSpinner"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.395" app:layout_constraintVertical_bias="0.442"/>
+    <EditText
+            android:layout_width="297dp"
+            android:layout_height="59dp"
+            android:inputType="textPersonName"
+            android:textColor="@color/black"
+            android:text="Semester Year"
+            android:ems="10"
+            android:id="@+id/SemesterYear"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintVertical_bias="0.578" app:layout_constraintHorizontal_bias="0.375"/>
+    <Button
+            android:text="Add"
+            android:layout_width="253dp"
+            android:layout_height="53dp" android:id="@+id/AddSemesterButton"
+            app:layout_constraintTop_toTopOf="parent"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintVertical_bias="0.733"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

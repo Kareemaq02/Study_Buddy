@@ -1,0 +1,98 @@
+<!-- res/layout/item_course.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical"
+              android:padding="16dp">
+
+    <TextView
+            android:id="@+id/courseNameTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/interdisplayextrabolditalic"
+            android:textColor="@color/black"
+            android:text="Course Name" />
+
+
+    <LinearLayout
+            android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:orientation="horizontal"
+                  android:padding="3dp">
+
+        <ImageView
+                android:id="@+id/courseImageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/locationsign"
+                android:layout_marginStart="-1dp"
+                android:paddingTop="2dp"
+        />
+
+        <TextView
+                android:id="@+id/courseLocationTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="1dp"
+                android:fontFamily="@font/inter"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:text="C782"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="3dp">
+        <ImageView
+                android:id="@+id/courseTimeImageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/time_left"
+                android:layout_marginStart="-0.5dp"
+                android:paddingTop="2dp"
+        />
+    <TextView
+            android:id="@+id/courseTimeTextView"
+            android:layout_width="match_parent"
+            android:fontFamily="@font/inter"
+            android:textStyle="bold"
+            android:layout_marginStart="1dp"
+            android:textColor="@color/black"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:text="1:00 pm - 2:00 pm" />
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="3dp">
+        <ImageView
+                android:id="@+id/courseDayImageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/date_input"
+                android:layout_marginStart="-3dp"
+                android:paddingTop="0.2dp"
+        />
+
+    <TextView
+            android:id="@+id/courseDateTextView"
+            android:layout_width="match_parent"
+            android:fontFamily="@font/inter"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:text="Sunday" />
+    </LinearLayout>
+    <!-- Add any other TextViews or views to display additional course details -->
+
+</LinearLayout>

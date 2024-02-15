@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/purple_700">
+
+    <RelativeLayout android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+    android:padding="3dp">
+        <TextView
+                android:layout_centerVertical="true"
+                android:id="@+id/action_bar_title"
+                android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="Study plans"
+                  android:layout_marginStart="40dp"
+                  android:layout_marginTop="3dp"
+
+                  android:textSize="24dp"
+                  android:textColor="@color/white"
+        android:textStyle="normal"/>
+        <ImageView
+                android:id="@+id/backButton"
+                android:layout_width="wrap_content"
+                android:layout_height="47dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/baseline_arrow_back_ios_new_24"/>
+
+
+    </RelativeLayout>
+
+</RelativeLayout>

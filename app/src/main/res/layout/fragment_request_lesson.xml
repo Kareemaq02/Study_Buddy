@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+<LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+    <Spinner
+            android:id="@+id/spinnerMajor2"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginBottom="16dp"
+            android:prompt="@string/select_major_prompt"
+            android:spinnerMode="dropdown"
+            android:background="@drawable/spinner_border"/>
+
+    <Spinner
+            android:id="@+id/spinnerCourses2"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginBottom="16dp"
+            android:prompt="@string/select_course_prompt"
+            android:spinnerMode="dropdown"
+            android:background="@drawable/spinner_border"/>
+
+    <TextView
+            android:text="Preferred Date:"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:id="@+id/textView15"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:layout_marginTop="10dp"/>/>
+    <Button
+            android:id="@+id/dateButton"
+            android:layout_width="207dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Any"
+            android:textSize="20sp"
+            style="?android:spinnerStyle"
+            android:background="@drawable/spinner_border"
+            android:paddingStart="5dp"/>
+    <TextView
+
+            android:text="Preferred Time:"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:id="@+id/textView16"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:layout_marginTop="10dp"/>/>
+    <Button
+            android:id="@+id/timeButton"
+            android:layout_width="211dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Any"
+            android:textSize="20sp"
+            style="?android:spinnerStyle"
+            android:background="@drawable/spinner_border"
+            android:paddingLeft="5dp"/>
+    <EditText
+            android:id="@+id/Description"
+            android:layout_width="match_parent"
+            android:layout_height="134dp"
+            android:layout_marginTop="10dp"
+            android:inputType="textMultiLine|textPersonName"
+            android:hint="Write a brief description of what you wish to learn"
+            android:ems="10"
+            android:background="@drawable/custom_edit_text"
+            android:gravity="top|start"
+            android:paddingTop="10dp"
+            android:paddingStart="15dp"
+            android:paddingEnd="10dp"
+            android:maxLines="3"
+            android:singleLine="false"/>
+
+    <Button
+            android:id="@+id/btnSubmitRequest"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Submit Request"
+            android:backgroundTint="@color/purple_700"
+            android:textColor="@android:color/white" />
+
+</LinearLayout>
+
+</ScrollView>
