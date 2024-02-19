@@ -7,11 +7,16 @@ import com.example.studybuddy.R
 
 class UserScheduleAdapter(
     private val semesterList: List<String>,
-    private val onItemClickListener: OnItemClickListener
+    private val onItemClickListener: OnItemClickListener,
+    private val onItemLongClickListener: OnItemLongClickListener
 ) : RecyclerView.Adapter<UserScheduleAdapter.ViewHolder>() {
 
     interface OnItemClickListener {
         fun onItemClick(semester: String)
+    }
+
+    interface OnItemLongClickListener {
+        fun onItemLongClick(semester: String)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -28,11 +33,12 @@ class UserScheduleAdapter(
         return semesterList.size
     }
 
-    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener, View.OnLongClickListener {
         private val semesterTextView: TextView = itemView.findViewById(R.id.semesterNumberTextView)
 
         init {
             itemView.setOnClickListener(this)
+            itemView.setOnLongClickListener(this)
         }
 
         fun bind(semesterName: String) {
@@ -45,6 +51,16 @@ class UserScheduleAdapter(
                 val semester = semesterList[position]
                 onItemClickListener.onItemClick(semester)
             }
+        }
+
+        override fun onLongClick(v: View): Boolean {
+            val position = adapterPosition
+            if (position != RecyclerView.NO_POSITION) {
+                val semester = semesterList[position]
+                onItemLongClickListener.onItemLongClick(semester)
+                return true
+            }
+            return false
         }
     }
 }

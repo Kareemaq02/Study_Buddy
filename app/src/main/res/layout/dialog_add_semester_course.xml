@@ -1,0 +1,87 @@
+<ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="30dp"
+            android:orientation="vertical">
+
+        <!-- Course Name -->
+        <TextView
+                android:id="@+id/textViewCourseName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Course Name:"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:layout_marginTop="16dp"/>
+
+        <EditText
+                android:id="@+id/editTextCourseName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter Course Name"/>
+
+        <!-- Course Location -->
+        <TextView
+                android:id="@+id/textViewLocation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Location:"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:layout_marginTop="16dp"/>
+
+        <EditText
+                android:id="@+id/editTextLocation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter Location (e.g., Room C452)"/>
+
+        <!-- Course Time -->
+        <TextView
+                android:id="@+id/textViewTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Time:"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:layout_marginTop="16dp"/>
+
+        <EditText
+                android:id="@+id/editTextTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter Time (e.g., 3:00 pm to 5:00 pm)"/>
+
+        <!-- Course Days -->
+        <TextView
+                android:id="@+id/textViewDays"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Days:"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:layout_marginTop="16dp"/>
+
+        <EditText
+                android:id="@+id/editTextDays"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter Days (e.g., Sundays, Mondays)"/>
+
+        <!-- Button to Add Course -->
+        <Button
+                android:id="@+id/acceptButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Add Course"
+                android:layout_marginTop="10dp"
+                android:textColor="@android:color/white"
+                android:backgroundTint="#5243B9"
+                android:background="@drawable/rounded_button_background"/>
+    </LinearLayout>
+</ScrollView>

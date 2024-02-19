@@ -58,14 +58,17 @@ class LoginActivity : AppCompatActivity() {
 
 
             // Validate credentials
-            if (validateCredentials(email, password)) {
-                // Perform login
-                login(email, password,  false)
-                // Send email to Semester Manager Fragment
-            } else {
-                // Show error message for invalid credentials
-                Toast.makeText(this, "Invalid email or password", Toast.LENGTH_SHORT).show()
+            validateCredentials(email, password) { isValid ->
+                if (isValid) {
+                    // Perform login
+                    login(email, password, false)
+                    // Send email to Semester Manager Fragment
+                } else {
+                    // Show error message for invalid credentials
+                    Toast.makeText(this, "Invalid email or password", Toast.LENGTH_SHORT).show()
+                }
             }
+
         }
 
         loginButtonAdmin = findViewById(R.id.loginButtonAdmin)
@@ -77,25 +80,86 @@ class LoginActivity : AppCompatActivity() {
             val password = passwordtext.text.toString()
 
             // Validate credentials
-            if (validateCredentials(email, password)) {
-                // Perform login
-                loginAdmin(email, password,  true)
-            } else {
-                // Show error message for invalid credentials
-                Toast.makeText(this, "Invalid email or password", Toast.LENGTH_SHORT).show()
+            validateCredentialsAdmin(email, password) { isValid ->
+                if (isValid) {
+                    // Perform login
+                    loginAdmin(email, password, true)
+                    // Send email to Semester Manager Fragment
+                } else {
+                    // Show error message for invalid credentials
+                    Toast.makeText(this, "Invalid email or password", Toast.LENGTH_SHORT).show()
+                }
             }
+
         }
 
     }
 
-    private fun validateCredentials(email: String, password: String): Boolean {
-        // Perform any necessary validation on the email and password
-        // For example, check if the email is in the correct format
-        // You can use regular expressions or other validation methods
-        // Return true if the credentials are valid, false otherwise
-        // You can customize this method based on your specific validation requirements
-        return email.isNotEmpty() && password.isNotEmpty()
+    private fun validateCredentials(email: String, password: String, callback: (Boolean) -> Unit) {
+        if (email.isNotEmpty() && password.isNotEmpty()) {
+            val database = FirebaseDatabase.getInstance().reference
+            val usersRef = database.child("users")
+
+            // Query to find the user with the matching email and password
+            val userQuery = usersRef.orderByChild("email").equalTo(email)
+
+            userQuery.addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(dataSnapshot: DataSnapshot) {
+                    for (userSnapshot in dataSnapshot.children) {
+                        val dbPassword = userSnapshot.child("password").getValue(String::class.java)
+                        if (dbPassword == password) {
+                            // Password matches, invoke callback with true
+                            callback(true)
+                            return
+                        }
+                    }
+                    // No matching user found or password doesn't match, invoke callback with false
+                    callback(false)
+                }
+
+                override fun onCancelled(databaseError: DatabaseError) {
+                    // Handle any errors that occur, invoke callback with false
+                    callback(false)
+                }
+            })
+        } else {
+            // Email or password is empty, invoke callback with false
+            callback(false)
+        }
     }
+    private fun validateCredentialsAdmin(email: String, password: String, callback: (Boolean) -> Unit) {
+        if (email.isNotEmpty() && password.isNotEmpty()) {
+            val database = FirebaseDatabase.getInstance().reference
+            val usersRef = database.child("admin")
+
+            // Query to find the user with the matching email and password
+            val userQuery = usersRef.orderByChild("email").equalTo(email)
+
+            userQuery.addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(dataSnapshot: DataSnapshot) {
+                    for (userSnapshot in dataSnapshot.children) {
+                        val dbPassword = userSnapshot.child("password").getValue(String::class.java)
+                        if (dbPassword == password) {
+                            // Password matches, invoke callback with true
+                            callback(true)
+                            return
+                        }
+                    }
+                    // No matching user found or password doesn't match, invoke callback with false
+                    callback(false)
+                }
+
+                override fun onCancelled(databaseError: DatabaseError) {
+                    // Handle any errors that occur, invoke callback with false
+                    callback(false)
+                }
+            })
+        } else {
+            // Email or password is empty, invoke callback with false
+            callback(false)
+        }
+    }
+
 
     private fun login(email: String, password: String, isAdmin: Boolean) {
         // Call the UserAuth class to perform the login process
