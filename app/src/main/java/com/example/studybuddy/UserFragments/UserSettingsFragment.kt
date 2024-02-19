@@ -50,7 +50,6 @@ class UserSettingsFragment : Fragment() {
     private lateinit var showFirstName: String
     private lateinit var showLastName: String
     private lateinit var logoutButton: Button
-    private lateinit var changeImage: ImageView
     private lateinit var userImageView: ImageView
 
     private val GALLERY_PERMISSION_REQUEST = 123
@@ -92,21 +91,7 @@ class UserSettingsFragment : Fragment() {
             showChangePasswordDialog()
         }
 
-        changeImage.setOnClickListener {
-            if (ContextCompat.checkSelfPermission(
-                    requireContext(),
-                    Manifest.permission.READ_EXTERNAL_STORAGE
-                ) != PackageManager.PERMISSION_GRANTED
-            ) {
-                ActivityCompat.requestPermissions(
-                    requireActivity(),
-                    arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),
-                    GALLERY_PERMISSION_REQUEST
-                )
-            } else {
-                openGallery()
-            }
-        }
+
 
         return view
     }
