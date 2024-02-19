@@ -1,6 +1,7 @@
 package com.example.studybuddy.fragments
 
 
+import GlobalData
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -49,7 +50,9 @@ class scheduledClassesTrackerFragment : Fragment() {
 
                 for (childSnapshot in snapshot.children) {
                     val requestType = childSnapshot.child("requestType").getValue(String::class.java)
-
+                    val userId = childSnapshot.child("userId").getValue(String::class.java)
+                    if(userId == GlobalData.loggedInUserId)
+                    {
                     when (requestType) {
                         "Teach request" -> {
                             val teachRequest = childSnapshot.getValue(teachRequest::class.java)
@@ -58,9 +61,11 @@ class scheduledClassesTrackerFragment : Fragment() {
                                 requests.add(teachRequest)
                             }
                         }
+
                         else -> {
                             // Handle invalid request type
                         }
+                    }
                     }
                 }
 

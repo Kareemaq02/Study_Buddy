@@ -15,12 +15,11 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@id/customActionBar"
-            android:layout_above="@id/addStudyPlan"
             android:scrollbars="vertical"/>
 
     <!-- Floating Action Button -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/addStudyPlan"
+            android:id="@+id/addSemesterCourse"
             android:layout_width="66dp"
             android:layout_height="75dp"
             app:maxImageSize="20dp"

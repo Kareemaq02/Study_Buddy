@@ -1,5 +1,7 @@
+import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
+import android.provider.Settings.Global
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,7 +13,7 @@ import com.example.studybuddy.R
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.database.*
 
-class UserSemestersManagerFragment : Fragment(), UserScheduleAdapter.OnItemClickListener {
+class UserSemestersManagerFragment : Fragment(), UserScheduleAdapter.OnItemClickListener, UserScheduleAdapter.OnItemLongClickListener {
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: UserScheduleAdapter
     private val semesterInfoList = mutableListOf<String>()
@@ -23,7 +25,7 @@ class UserSemestersManagerFragment : Fragment(), UserScheduleAdapter.OnItemClick
         recyclerView = view.findViewById(R.id.recyclerView)
         recyclerView.layoutManager = GridLayoutManager(requireContext(), 2) // 2 columns
 
-        adapter = UserScheduleAdapter(semesterInfoList, this) // Pass the fragment itself as the listener
+        adapter = UserScheduleAdapter(semesterInfoList, this, this) // Pass the fragment itself as the listener
         recyclerView.adapter = adapter
 
         // Get the currently logged-in user's email from GlobalData
@@ -85,17 +87,87 @@ class UserSemestersManagerFragment : Fragment(), UserScheduleAdapter.OnItemClick
     }
 
     override fun onItemClick(semester: String) {
+        GlobalData.semesterName = semester
         val intent = Intent(requireContext(), UserSemesterCoursesActivity::class.java)
         intent.putExtra("semesterName", semester)
         startActivity(intent)
     }
 
+    override fun onItemLongClick(semester: String) {
+        // Show confirmation dialog before deletion
+        showConfirmationDialog(semester)
+    }
 
     private fun showCustomDialog() {
         val dialog = UserAddSemesterDialog()
         dialog.setAdapter(adapter, this) // Pass adapter and fragment reference
         dialog.show(parentFragmentManager, "UserAddSemesterDialog")
     }
+
+    private fun showConfirmationDialog(semester: String) {
+        AlertDialog.Builder(requireContext())
+            .setTitle("Confirm Deletion")
+            .setMessage("Are you sure you want to remove this semester?")
+            .setPositiveButton("Yes") { dialogInterface, _ ->
+                // Proceed with deletion
+                deleteSemester(semester)
+                dialogInterface.dismiss()
+            }
+            .setNegativeButton("No") { dialogInterface, _ ->
+                dialogInterface.dismiss()
+            }
+            .show()
+    }
+
+    private fun deleteSemester(semester: String) {
+        val database = FirebaseDatabase.getInstance()
+
+        // Reference to the "users" node in the database
+        val usersRef = database.getReference("users")
+
+        // Query to find the user with the matching email
+        val userEmail = GlobalData.userEmail
+        val userQuery = usersRef.orderByChild("email").equalTo(userEmail)
+
+        userQuery.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                // Iterate over user data
+                for (userSnapshot in dataSnapshot.children) {
+                    // Get semesters for the user
+                    val semesterDataSnapshot = userSnapshot.child("semester")
+
+                    // Iterate over semesters
+                    for (semesterSnapshot in semesterDataSnapshot.children) {
+                        // Extract semester details
+                        val selectedSemester = semesterSnapshot.child("name").getValue(String::class.java)
+
+                        // Check if the selected semester matches the one to be deleted
+                        if (selectedSemester == semester) {
+                            // Remove the semester data from the database
+                            semesterSnapshot.ref.removeValue()
+                                .addOnSuccessListener {
+                                    // Successful deletion
+                                    // You may want to show a Toast or perform any other action here
+                                }
+                                .addOnFailureListener { e ->
+                                    // Handle any errors that occur during deletion
+                                }
+                            break // Exit the loop after finding the semester
+                        }
+                    }
+                }
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                // Handle error
+            }
+        })
+
+        // After successful deletion from the database, update the adapter
+        semesterInfoList.remove(semester)
+        adapter.notifyDataSetChanged()
+    }
+
     fun updateAdapterData(newData: List<String>) {
         semesterInfoList.clear()
         semesterInfoList.addAll(newData)

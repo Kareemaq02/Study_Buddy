@@ -284,7 +284,7 @@ class RequestsAdapter(private val items: List<Any>) : RecyclerView.Adapter<Recyc
 
 
                     if (raters != null) {
-                        println(raters)
+                        println("raters $raters")
                         ratersCount=raters
                     }
                 }
@@ -310,7 +310,7 @@ class RequestsAdapter(private val items: List<Any>) : RecyclerView.Adapter<Recyc
                     } else {
                         0.0f
                     }
-                    println(rating)
+                    println("rating: $rating")
                     val ratingBar = itemView.findViewById<RatingBar>(R.id.ratingBar)
                     ratingBar.rating = rating.toFloat()
                 }
@@ -321,15 +321,15 @@ class RequestsAdapter(private val items: List<Any>) : RecyclerView.Adapter<Recyc
             })
 
 
-            println(ratersCount)
-            println(numStars)
+            println("Raters count $ratersCount")
+            println("Num of stars $numStars")
             val rating: Float = if (ratersCount != 0) {
                 val ratingValue = numStars.toDouble() / ratersCount.toDouble()
                 roundToHalf(ratingValue).toFloat()
             } else {
                 0.0f
             }
-            println(rating)
+            println("another rating $rating")
             val ratingBar = itemView.findViewById<RatingBar>(R.id.ratingBar)
             ratingBar.rating=rating.toFloat()
 

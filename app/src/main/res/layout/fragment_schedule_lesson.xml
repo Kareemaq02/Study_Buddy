@@ -53,7 +53,7 @@
                 android:paddingLeft="5dp"/>
 
         <TextView
-                android:text="Duration:"
+                android:text="Duration in hours:"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/textView13"

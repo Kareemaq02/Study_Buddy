@@ -11,13 +11,9 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import android.content.Context.*
 import android.widget.ImageButton
-import android.widget.ImageView
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.example.studybuddy.data.teachRequest
-import java.util.*
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
@@ -134,8 +130,15 @@ class RequestAdapter : ListAdapter<teachRequest, RequestAdapter.RequestViewHolde
                                 val major = childSnapshot.child("major").getValue(String::class.java)
                                 val numberofstars = childSnapshot.child("numStars").getValue(Double::class.java)
                                 val numberofraters = childSnapshot.child("ratersCount").getValue(Double::class.java)
+
                                 //calculating the rating
-                                var rating = numberofstars?.div(numberofraters!!)
+                                val rating = if (numberofraters != 0.0) {
+                                    (numberofstars ?: 0.0) / numberofraters!!
+                                } else {
+                                    0.0
+                                }
+
+
                                 val message = "Email: $email\nMajor: $major\nRating: $rating"
 
                                 val alertDialog = AlertDialog.Builder(itemView.context)

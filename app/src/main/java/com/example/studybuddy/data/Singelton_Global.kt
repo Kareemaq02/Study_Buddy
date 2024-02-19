@@ -9,4 +9,5 @@ object GlobalData {
     var majorArrange: String = ""
     var courseArrange: String = ""
     var studentsNumArrange: String = ""
+    var semesterName: String = ""
 }
