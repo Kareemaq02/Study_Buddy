@@ -1,7 +1,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                xmlns:app="http://schemas.android.com/apk/res-auto">
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:background="@drawable/background_demo1"
+        >
 
     <include
             android:id="@+id/customActionBar"
@@ -30,6 +32,6 @@
             android:layout_marginBottom="50dp"
             android:src="@drawable/plus_svgrepo_com"
             android:tint="@color/white"
-            android:backgroundTint="@color/purple_300"/>
+            android:backgroundTint="#425af5"/>
 
 </RelativeLayout>

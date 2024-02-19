@@ -3,7 +3,9 @@
               xmlns:app="http://schemas.android.com/apk/res-auto"
               xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
               android:layout_height="wrap_content"
-              android:orientation="vertical">
+              android:orientation="vertical"
+        android:background="@drawable/background_demo1"
+        >
 
 
     <TextView
@@ -79,7 +81,7 @@
                 android:layout_height="match_parent"
                 android:text="Accept"
                 android:textColor="@android:color/white"
-                android:backgroundTint="#5243B9"
+                android:backgroundTint="#425af5"
                 android:background="@drawable/rounded_button_background"/>
 
         <Space
@@ -92,7 +94,7 @@
                 android:layout_height="wrap_content"
                 android:text="Decline"
                 android:textColor="@android:color/white"
-                android:backgroundTint="#5243B9"
+                android:backgroundTint="#425af5"
                 android:background="@drawable/rounded_button_background"/>
 
         <ImageButton
@@ -102,7 +104,7 @@
                 android:layout_weight="15"
                 app:srcCompat="@android:drawable/ic_dialog_info"
                 android:textColor="@android:color/white"
-                android:backgroundTint="#5243B9"
+                android:backgroundTint="#425af5"
                 android:background="@drawable/rounded_button_background"/>
 
     </LinearLayout>

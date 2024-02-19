@@ -1,7 +1,9 @@
 <ScrollView
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@drawable/background_demo1"
+        >
 
 
     <LinearLayout
@@ -114,7 +116,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="50dp"
                 android:text="Schedule Class"
-                android:backgroundTint="@color/purple_700"
+                android:backgroundTint="#425af5"
                 android:textColor="@android:color/white"/>
 
     </LinearLayout>

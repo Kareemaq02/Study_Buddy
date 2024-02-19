@@ -5,8 +5,10 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@android:color/white"
-        android:textColor="@android:color/black">
+
+        android:textColor="@android:color/black"
+        android:background="@drawable/background_demo1"
+        >
 
     <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/viewPagerUser"
@@ -36,7 +38,7 @@
             android:layout_marginBottom="10dp"
             android:src="@drawable/plus_svgrepo_com"
             android:tint="@color/white"
-            android:backgroundTint="@color/purple_300"
+            android:backgroundTint="#425af5"
             app:layout_constraintTop_toTopOf="@id/tabLayoutUser"
             app:layout_constraintStart_toStartOf="@id/tabLayoutUser"
             app:layout_constraintEnd_toEndOf="@id/tabLayoutUser"

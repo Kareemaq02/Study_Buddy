@@ -3,7 +3,9 @@
              xmlns:tools="http://schemas.android.com/tools"
              android:layout_width="match_parent"
              android:layout_height="match_parent"
-             tools:context=".UserFragments.UserEnrolledLessonsFragment">
+             tools:context=".UserFragments.UserEnrolledLessonsFragment"
+        android:background="@drawable/background_demo1"
+        >
 
     <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabLayoutRequest"

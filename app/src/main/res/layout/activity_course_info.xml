@@ -1,7 +1,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
               android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto"
-              android:orientation="vertical">
+              android:orientation="vertical"
+              android:background="@drawable/background_demo1">
 
     <include
             layout="@layout/customactionbar"
@@ -9,7 +10,9 @@
             android:layout_height="wrap_content"
             android:id="@+id/include"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            android:background="#425af5"
+            android:backgroundTint="#425af5"/>
 
     <TextView
             android:id="@+id/titleTextView"

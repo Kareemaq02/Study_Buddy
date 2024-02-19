@@ -25,7 +25,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.studybuddy.Activity.LoginActivity
 import com.example.studybuddy.R
-import com.example.studybuddy.R.id.firstname
+import com.example.studybuddy.R.id.firstNameTextView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.google.firebase.storage.FirebaseStorage
@@ -61,16 +61,18 @@ class UserSettingsFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_user_settings, container, false)
 
-        userFirstName = view.findViewById(firstname)
+        userFirstName = view.findViewById(firstNameTextView)
         //userLastName = view.findViewById(R.id.lastname)
-        userEmail = view.findViewById(R.id.email)
-        changePasswordButton = view.findViewById(R.id.button4)
+        userEmail = view.findViewById(R.id.emailTextView)
+        changePasswordButton = view.findViewById(R.id.changePasswordButton)
+
         //newPasswordEditText = view.findViewById(R.id.edit_text_new_password)
-        changeImage = view.findViewById(R.id.changePhoto)
-        userImageView = view.findViewById(R.id.userImage)
+        //go to new activity instead of doing it here.
+        //changeImage = view.findViewById(R.id.changePhoto)
+        //userImageView = view.findViewById(R.id.userImage)
 
         // logout
-        logoutButton = view.findViewById(R.id.button2)
+        logoutButton = view.findViewById(R.id.logoutButton)
         logoutButton.setOnClickListener { showLogoutDialog() }
 
         // Initialize Firebase instances

@@ -2,7 +2,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
                                                    xmlns:app="http://schemas.android.com/apk/res-auto"
                                                    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-                                                   android:layout_height="match_parent">
+                                                   android:layout_height="match_parent"
+        android:background="@drawable/background_demo1">
 
     <TextView
             android:id="@+id/semesterNumberTextView"
@@ -39,7 +40,7 @@
             android:layout_alignParentEnd="true"
             android:src="@drawable/plus_svgrepo_com"
             android:tint="@color/white"
-            android:backgroundTint="@color/purple_300"
+            android:backgroundTint="#425af5"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

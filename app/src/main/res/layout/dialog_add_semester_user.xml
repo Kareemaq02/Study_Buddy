@@ -2,20 +2,22 @@
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:orientation="vertical"
-              android:padding="16dp">
+              android:padding="16dp"
+        android:background="@drawable/background_demo1"
+        >
 
+
+    <!-- Spinner for Semester Type -->
     <EditText
             android:id="@+id/semesterEditText"
             android:layout_width="600dp"
             android:layout_height="wrap_content"
             android:hint="@string/year"
             android:inputType="number"
-            android:backgroundTint="@color/purple_300"
+            android:backgroundTint="#425af5"
             android:textColor="@color/black"
             android:maxLength="4" />
 
-
-    <!-- Spinner for Semester Type -->
     <Spinner
             android:id="@+id/semesterTypeSpinner"
             android:layout_width="200dp"
@@ -36,7 +38,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Add"
-                android:backgroundTint="@color/purple_500"
+                android:backgroundTint="#425af5"
                 android:textColor="@color/white"/>
 
         <Button
@@ -45,7 +47,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Cancel"
-                android:backgroundTint="@color/purple_500"
+                android:backgroundTint="#425af5"
                 android:textColor="@color/white" />
 
     </LinearLayout>

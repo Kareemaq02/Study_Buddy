@@ -4,9 +4,11 @@
              android:layout_width="match_parent"
              android:layout_height="match_parent"
              tools:context=".UserFragments.UserDashboardFragment"
-             android:background="@android:color/white"
+
              android:textColor="@android:color/black"
->
+        android:background="@drawable/background_demo1"
+
+        >
 
     <!-- TODO: Update blank fragment layout -->
     <TextView

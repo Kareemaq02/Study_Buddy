@@ -6,8 +6,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".MainActivity"
-        android:background="@android:color/white"
         android:textColor="@android:color/black"
+        android:background="@drawable/background_demo1"
 >
     <Button
             android:text="Sign Up"
@@ -16,6 +16,12 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintVertical_bias="0.806"/>
+            app:layout_constraintVertical_bias="0.806"
+            android:layout_marginTop="16dp"
+            android:background="#425af5"
+            android:textSize="16sp"
+            android:textColor="#FFFFFF"
+            android:padding="12dp"
+            android:backgroundTint="#425af5"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
