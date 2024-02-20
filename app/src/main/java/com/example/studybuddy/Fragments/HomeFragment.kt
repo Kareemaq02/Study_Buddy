@@ -47,7 +47,7 @@ class HomeFragment : Fragment() {
                 for (snapshot in dataSnapshot.children) {
                     val request = snapshot.getValue(teachRequest::class.java)
                     request?.let {
-                        if (it.requestType =="Teach request") {
+                        if (it.requestType =="Teach request" && it.status=="Waiting confirmation") {
                             it.requestId = snapshot.key // overwrite the requestis so it store the requestkey
                             requests.add(it)
                         }
