@@ -179,7 +179,7 @@ class RegisterClassAdapter(private val items: List<Any>) : RecyclerView.Adapter<
 
                     }
                 })
-        dialog.show()
+              dialog.show()
 
                 // Set a click listener for the submit button
                 // Set a click listener for the submit button
@@ -228,13 +228,12 @@ class RegisterClassAdapter(private val items: List<Any>) : RecyclerView.Adapter<
 
                     val participatedRequestsRef = usersRef.child(GlobalData.loggedInUserId).child("participatedRequests")
                     val requestIdToDelete = item.requestId.toString()
-
+                    println("Participated Request ID: $requestIdToDelete")
                     participatedRequestsRef.addListenerForSingleValueEvent(object : ValueEventListener {
                         override fun onDataChange(dataSnapshot: DataSnapshot) {
                             for (childSnapshot in dataSnapshot.children) {
                                 val key = childSnapshot.key
-                                val requestId = childSnapshot.child(item.requestId.toString()).getValue(String::class.java)
-
+                                val requestId = childSnapshot.getValue(String::class.java)
                                 if (requestId == requestIdToDelete && key != null) {
                                     participatedRequestsRef.child(key).removeValue()
                                         .addOnSuccessListener {
