@@ -1,67 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:orientation="vertical"
-              android:padding="16dp">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
 
-    <ImageView
-            android:id="@+id/imageViewRating3"
-            android:layout_width="144dp"
-            android:layout_height="130dp"
-            android:layout_marginStart="110dp"
-            android:src="@drawable/circular_image_background"
-            android:scaleType="centerCrop"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/circular_image_background"/>
+    <!-- Removed the ImageView -->
+
     <TextView
-            android:layout_marginStart="90dp"
-            android:textAlignment="center"
             android:id="@+id/editTextFirstName3"
-            android:layout_width="192dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="First Name"
             android:textColor="@color/black"
-            android:textAppearance="?android:textAppearanceLarge"/>
+            android:textAppearance="?android:textAppearanceLarge"
+            android:gravity="center"/>
 
     <TextView
-            android:textAppearance="?android:textAppearanceLarge"
-            android:layout_marginStart="90dp"
-            android:textAlignment="center"
             android:id="@+id/editTextLastName3"
-            android:layout_width="193dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Last Name"
-            android:textColor="@color/black"/>
+            android:textColor="@color/black"
+            android:textAppearance="?android:textAppearanceLarge"
+            android:gravity="center"/>
 
     <TextView
             android:id="@+id/TextRating3"
-            android:textAppearance="?android:textAppearanceLarge"
-            android:layout_marginStart="90dp"
-            android:textAlignment="center"
-            android:layout_width="192dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="4.5"
-            android:textColor="@color/black"/>
+            android:textColor="@color/black"
+            android:textAppearance="?android:textAppearanceLarge"
+            android:gravity="center"/>
+
     <RatingBar
-            android:layout_marginStart="65dp"
-            android:progressTint="#FFD700"
-            android:secondaryProgressTint="#FFD700"
             android:id="@+id/ratingBar2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:numStars="5"
-            android:stepSize="1"/>
+            android:stepSize="1"
+            android:layout_gravity="center"
+            android:progressTint="#FFD700"/>
+
     <Button
             android:id="@+id/buttonSubmit3"
-            android:layout_width="295dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
             android:text="Submit"
-            android:textSize="20dp"
+            android:textSize="20sp"
             android:textColor="@android:color/white"
             android:backgroundTint="#425af5"
             android:background="@drawable/rounded_button_background"
-    />
-
+            android:layout_marginTop="16dp"/>
 </LinearLayout>
