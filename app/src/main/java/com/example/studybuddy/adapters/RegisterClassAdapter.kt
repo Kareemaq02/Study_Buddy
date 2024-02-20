@@ -263,7 +263,7 @@ class RegisterClassAdapter(private val items: List<Any>) : RecyclerView.Adapter<
         }
 
         private fun loadImageFromFirebaseStorage(item: teachRequest) {
-            val posterImage: ImageView = itemView.findViewById(R.id.imageViewRating3)
+
             val database = FirebaseDatabase.getInstance()
             val posterUser = item.userId
             val usersRef = database.reference.child("users")
@@ -276,13 +276,7 @@ class RegisterClassAdapter(private val items: List<Any>) : RecyclerView.Adapter<
                     for (userSnapShot in dataSnapshot.children) {
                         val image = userSnapShot.child("image").getValue(String::class.java)
 
-                        // Load the image into the changeImage ImageView using Glide
-                        if (!image.isNullOrEmpty()) {
-                            Glide.with(itemView.context)
-                                .load(image)
-                                .apply(RequestOptions.circleCropTransform())
-                                .into(posterImage)
-                        }
+
                     }
                 }
 

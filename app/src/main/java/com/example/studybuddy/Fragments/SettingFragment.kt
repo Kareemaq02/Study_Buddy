@@ -50,11 +50,9 @@ class SettingFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
-        firstNameEditText = view.findViewById(R.id.editTextTextPersonName4)
-        lastNameEditText = view.findViewById(R.id.editTextTextPersonName3)
+
         changePasswordButton = view.findViewById(R.id.button4)
-        pencilImageButton1 = view.findViewById(R.id.imageButton4)
-        pencilImageButton2 = view.findViewById(R.id.imageButton3)
+
         logoutButton = view.findViewById(R.id.button2)
         addCourseButton = view.findViewById(R.id.button)
         emailTextView = view.findViewById(R.id.email)
