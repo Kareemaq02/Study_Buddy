@@ -276,6 +276,7 @@ class RequestsAdapter(private val items: List<Any>) : RecyclerView.Adapter<Recyc
 
                 }
             })
+            Thread.sleep(100L)
             val userRatersRef: DatabaseReference = usersRef.child(userKey).child("ratersCount")
             userRatersRef.addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
@@ -284,7 +285,7 @@ class RequestsAdapter(private val items: List<Any>) : RecyclerView.Adapter<Recyc
 
 
                     if (raters != null) {
-                        println("raters $raters")
+                        println("raters -> $raters")
                         ratersCount=raters
                     }
                 }
@@ -297,6 +298,7 @@ class RequestsAdapter(private val items: List<Any>) : RecyclerView.Adapter<Recyc
             userStarsRef.addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
 
+                    println("raters count check 2 : $ratersCount")
                     val starsCount: Double? = dataSnapshot.getValue(Double::class.java)
 
                     if (starsCount != null) {
@@ -310,7 +312,7 @@ class RequestsAdapter(private val items: List<Any>) : RecyclerView.Adapter<Recyc
                     } else {
                         0.0f
                     }
-                    println("rating: $rating")
+                    println(rating)
                     val ratingBar = itemView.findViewById<RatingBar>(R.id.ratingBar)
                     ratingBar.rating = rating.toFloat()
                 }
@@ -321,15 +323,15 @@ class RequestsAdapter(private val items: List<Any>) : RecyclerView.Adapter<Recyc
             })
 
 
-            println("Raters count $ratersCount")
-            println("Num of stars $numStars")
+            println("raters Count: $ratersCount")
+            println(numStars)
             val rating: Float = if (ratersCount != 0) {
                 val ratingValue = numStars.toDouble() / ratersCount.toDouble()
                 roundToHalf(ratingValue).toFloat()
             } else {
                 0.0f
             }
-            println("another rating $rating")
+            println("rating = $rating")
             val ratingBar = itemView.findViewById<RatingBar>(R.id.ratingBar)
             ratingBar.rating=rating.toFloat()
 
@@ -344,7 +346,7 @@ class RequestsAdapter(private val items: List<Any>) : RecyclerView.Adapter<Recyc
             participantsCountTextView.text = item.number_of_students.toString()
 
 
-           val participateButton: Button = itemView.findViewById(R.id.buttonParticipate)
+            val participateButton: Button = itemView.findViewById(R.id.buttonParticipate)
 
             participateButton.setOnClickListener {
                 val requestRef: DatabaseReference = database.getReference("requests").child(item.requestId.toString())
@@ -372,7 +374,7 @@ class RequestsAdapter(private val items: List<Any>) : RecyclerView.Adapter<Recyc
                                             val participantsCount: Int = item.number_of_students + 1
                                             requestRef.child("number_of_students").setValue(participantsCount)
                                             participantsCountTextView.text = "$participantsCount"
-                                           val partReqRef= usersRef.child(GlobalData.loggedInUserId).child("participatedRequests")
+                                            val partReqRef= usersRef.child(GlobalData.loggedInUserId).child("participatedRequests")
                                             val newParticipantReq = partReqRef.push()
                                             newParticipantReq.setValue(item.requestId)
                                             Toast.makeText(itemView.context, "You have successfully participated", Toast.LENGTH_SHORT).show()
