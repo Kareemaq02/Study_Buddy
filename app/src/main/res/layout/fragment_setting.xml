@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/profileImageView"
             android:layout_marginTop="16dp"
-            android:text="First Name"
+            android:text="Admin"
             android:layout_centerHorizontal="true"
             android:textSize="18sp"/>
 
@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/firstNameTextView"
             android:layout_marginTop="8dp"
-            android:text="Last Name"
+            android:text=""
             android:layout_centerHorizontal="true"
             android:textSize="18sp"/>
 
@@ -37,7 +37,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/lastNameTextView"
             android:layout_marginTop="8dp"
-            android:text="user@example.com"
+            android:text=""
             android:layout_centerHorizontal="true"
             android:textSize="18sp"/>
 

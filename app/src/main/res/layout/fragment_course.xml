@@ -1,11 +1,11 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:background="@drawable/background_demo1">
+       >
     <include layout="@layout/custom_actionbar_no_back"/>
     <!-- ListView -->
     <ListView
-            android:id="@+id/studyplanListView"
+            android:id="@+id/MajorsListViewADmin"
             android:layout_width="match_parent"
             android:layout_height="691dp"
             android:scrollbars="vertical"

@@ -4,10 +4,8 @@
                                                    xmlns:tools="http://schemas.android.com/tools"
                                                    android:layout_width="match_parent"
                                                    android:layout_height="match_parent"
-
                                                    android:textColor="@android:color/black"
-                                                   android:background="@drawable/background_demo1"
->
+                                                   android:background="@drawable/background_demo1">
 
     <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/viewPager"
@@ -31,7 +29,7 @@
 
     <TextView
             android:id="@+id/textView"
-            android:layout_width="151dp"
+            android:layout_width="0dp"
             android:layout_height="66dp"
             android:text="Homepage"
             app:layout_constraintTop_toTopOf="parent"

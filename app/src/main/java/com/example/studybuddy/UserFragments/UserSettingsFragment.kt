@@ -44,7 +44,6 @@ class UserSettingsFragment : Fragment() {
     private lateinit var usersRef: DatabaseReference
     private lateinit var currentUserRef: DatabaseReference
     private lateinit var userFirstName: TextView
-    private lateinit var userLastName: TextView
     private lateinit var userEmail: TextView
     private lateinit var email: String
     private lateinit var showFirstName: String
@@ -61,7 +60,6 @@ class UserSettingsFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_user_settings, container, false)
 
         userFirstName = view.findViewById(firstNameTextView)
-        //userLastName = view.findViewById(R.id.lastname)
         userEmail = view.findViewById(R.id.emailTextView)
         changePasswordButton = view.findViewById(R.id.changePasswordButton)
 
@@ -131,10 +129,11 @@ class UserSettingsFragment : Fragment() {
             override fun onDataChange(snapshot: DataSnapshot) {
                 for (userSnapshot in snapshot.children) {
                     val firstName = userSnapshot.child("firstname").getValue(String::class.java)
+                    val lastName  = userSnapshot.child("lastname").getValue(String::class.java)
 
                     Log.d("UserSettingsFragment", "First Name: $firstName")
 
-                    userFirstName.text = "Welcome $firstName"
+                    userFirstName.text = "Welcome $firstName $lastName"
                     userEmail.text = "Email: $email"
 
 
@@ -159,8 +158,16 @@ class UserSettingsFragment : Fragment() {
             val newPassword = passwordEditText.text.toString().trim()
 
             if (newPassword.isNotEmpty()) {
-                // Update the password in Firebase
-                editUserPassword(newPassword)
+                val hasUppercase = newPassword.any { it.isUpperCase() }
+                val hasSpecialChar = newPassword.any { !it.isLetterOrDigit() }
+
+                if (hasUppercase && hasSpecialChar) {
+                    // Update the password in Firebase
+                    editUserPassword(newPassword)
+                } else {
+                    // Show an error message for invalid password format
+                    showInvalidPasswordDialog()
+                }
             } else {
                 // Show an error message for empty password
                 showInvalidPasswordDialog()
@@ -176,6 +183,7 @@ class UserSettingsFragment : Fragment() {
         val dialog = builder.create()
         dialog.show()
     }
+
 
     private fun editUserPassword(newPassword: String) {
         currentUserRef.addListenerForSingleValueEvent(object : ValueEventListener {
@@ -207,19 +215,31 @@ class UserSettingsFragment : Fragment() {
             }
         })
     }
-
+    private var successDialog: AlertDialog? = null
     private fun showPasswordChangeSuccessDialog() {
-        val builder = AlertDialog.Builder(requireContext())
-        builder.setTitle("Password Change Success")
-        builder.setMessage("Your password has been changed successfully.")
+        if (successDialog == null) { // Check if the dialog instance exists
+            val builder = AlertDialog.Builder(requireContext())
+            builder.setTitle("Password Change Success")
+            builder.setMessage("Your password has been changed successfully.")
 
-        builder.setPositiveButton("OK") { dialogInterface: DialogInterface, _: Int ->
-            dialogInterface.dismiss()
+            builder.setPositiveButton("OK") { dialogInterface: DialogInterface, _: Int ->
+                dialogInterface.dismiss() // Dismiss the dialog after positive button click
+            }
+
+            // Create the dialog only if it's not already showing
+            if (!requireActivity().isFinishing && !requireActivity().isDestroyed) {
+                successDialog = builder.create()
+                successDialog?.show()
+            }
         }
-
-        val dialog = builder.create()
-        dialog.show()
     }
+
+    // In your Fragment's onDestroyView() or onDestroy() method, reset the dialog instance
+    override fun onDestroyView() {
+        super.onDestroyView()
+        successDialog = null
+    }
+
 
     private fun showPasswordChangeFailureDialog() {
         val builder = AlertDialog.Builder(requireContext())
@@ -237,7 +257,7 @@ class UserSettingsFragment : Fragment() {
     private fun showInvalidPasswordDialog() {
         val builder = AlertDialog.Builder(requireContext())
         builder.setTitle("Invalid Password")
-        builder.setMessage("Please enter a valid password.")
+        builder.setMessage("Password must contain at least one uppercase letter and one special character.")
 
         builder.setPositiveButton("OK") { dialogInterface: DialogInterface, _: Int ->
             dialogInterface.dismiss()

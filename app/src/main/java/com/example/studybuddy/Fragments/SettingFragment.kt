@@ -27,8 +27,6 @@ class SettingFragment : Fragment() {
     private lateinit var lastNameEditText: EditText
     private lateinit var emailTextView: TextView
     private lateinit var changePasswordButton: Button
-    private lateinit var pencilImageButton1: ImageButton
-    private lateinit var pencilImageButton2: ImageButton
     private lateinit var logoutButton: Button
     private lateinit var addCourseButton: Button
 
@@ -59,8 +57,7 @@ class SettingFragment : Fragment() {
 
 
 
-        pencilImageButton1.setOnClickListener { confirmFirstNameChange() }
-        pencilImageButton2.setOnClickListener { confirmLastNameChange() }
+
         changePasswordButton.setOnClickListener { showChangePasswordDialog() }
         logoutButton.setOnClickListener {showLogoutDialog()}
         addCourseButton.setOnClickListener {
@@ -104,32 +101,7 @@ class SettingFragment : Fragment() {
 
  */
 
-    private fun confirmFirstNameChange() {
-        val newFirstName = firstNameEditText.text.toString().trim()
 
-        if (newFirstName.isNotEmpty()) {
-            val builder = AlertDialog.Builder(requireContext())
-            builder.setTitle("Confirm First Name Change")
-            builder.setMessage("Are you sure you want to change your first name to \"$newFirstName\"?")
-
-            builder.setPositiveButton("Yes") { dialogInterface: DialogInterface, _: Int ->
-                val database = FirebaseDatabase.getInstance()
-                val adminsRef = database.getReference("admin").child("11").child("firstname")
-                adminsRef.setValue(newFirstName)
-
-                dialogInterface.dismiss()
-            }
-
-            builder.setNegativeButton("No") { dialogInterface: DialogInterface, _: Int ->
-                // User denied the first name change
-                // You can perform any actions here
-                dialogInterface.dismiss()
-            }
-
-            val dialog = builder.create()
-            dialog.show()
-        }
-    }
 
     private fun confirmLastNameChange() {
         val newLastName = lastNameEditText.text.toString().trim()
@@ -213,14 +185,46 @@ class SettingFragment : Fragment() {
             if (validateNewPassword(newPassword)) {
                 // Password change successful
                 val database = FirebaseDatabase.getInstance()
-                val adminsRef = database.getReference("admin").child("11").child("password")
-                adminsRef.setValue(newPassword)
-                showPasswordChangeSuccessDialog()
+                val adminEmail = GlobalData.userEmail
+                val adminsRef = database.getReference("admin")
+
+// Query to find the admin node with the specified email
+                val query = adminsRef.orderByChild("email").equalTo(adminEmail)
+
+                query.addListenerForSingleValueEvent(object : ValueEventListener {
+                    override fun onDataChange(dataSnapshot: DataSnapshot) {
+                        if (dataSnapshot.exists()) {
+                            for (adminSnapshot in dataSnapshot.children) {
+                                // Get the password of the admin with the matching email
+                                val adminPassword = adminSnapshot.child("password").getValue(String::class.java)
+                                // Assuming newPassword is the new password you want to set
+
+
+                                // Update the password
+                                adminSnapshot.ref.child("password").setValue(newPassword)
+                                    .addOnSuccessListener {
+                                    }
+                                    .addOnFailureListener { exception ->
+                                      showInvalidPasswordDialog()
+                                    }
+                                return // Exit the function since we found and updated the admin
+                            }
+                        } else {
+                            // Admin with the specified email not found
+                            // Handle error
+                        }
+                    }
+
+                    override fun onCancelled(databaseError: DatabaseError) {
+                        // Handle database error
+                    }
+                })
+
             } else {
                 // Invalid new password
                 showInvalidPasswordDialog()
             }
-
+        showPasswordChangeSuccessDialog()
             dialogInterface.dismiss()
         }
 

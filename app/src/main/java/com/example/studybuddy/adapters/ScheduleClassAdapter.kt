@@ -9,8 +9,8 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.studybuddy.R
 import com.example.studybuddy.data.teachRequest
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.*
+
 class ScheduleClassAdapter(private val items: List<Any>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
 
@@ -101,17 +101,33 @@ class ScheduleClassAdapter(private val items: List<Any>) : RecyclerView.Adapter<
 
 
             completeButton.setOnClickListener {
+                val statusRef = requestsRef.child(item.requestId.toString()).child("status")
 
+                // Retrieve the status value from Firebase
+                statusRef.addListenerForSingleValueEvent(object : ValueEventListener {
+                    override fun onDataChange(dataSnapshot: DataSnapshot) {
+                        val status = dataSnapshot.getValue(String::class.java)
 
+                        // Check if the status is "Accepted"
+                        if (status == "Accepted") {
+                            // Update the status to "Completed"
+                            statusRef.setValue("Completed").addOnCompleteListener { task ->
+                                if (task.isSuccessful) {
+                                    Toast.makeText(itemView.context, "Lesson marked as complete", Toast.LENGTH_SHORT).show()
+                                } else {
+                                    Toast.makeText(itemView.context, "Failed to mark lesson as complete", Toast.LENGTH_SHORT).show()
+                                }
+                            }
+                        } else {
+                            Toast.makeText(itemView.context, "Lesson can't be completed. Please check the status.", Toast.LENGTH_SHORT).show()
+                        }
+                    }
 
-                  val statusRef=  requestsRef.child(item.requestId.toString()).child("status")
-                if(statusRef.equals("Accepted")) {
-                    statusRef.setValue("Completed")
-                    Toast.makeText(itemView.context, "Lesson marked as complete", Toast.LENGTH_SHORT).show()
-                }
-                else
-                    Toast.makeText(itemView.context, "Lesson can't be completed check status", Toast.LENGTH_SHORT).show()
-
+                    override fun onCancelled(databaseError: DatabaseError) {
+                        // Handle error
+                        Toast.makeText(itemView.context, "Error: ${databaseError.message}", Toast.LENGTH_SHORT).show()
+                    }
+                })
             }
 
 

@@ -36,7 +36,7 @@ class CourseFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_course, container, false)
-        listView = view.findViewById(R.id.studyplanListView)
+        listView = view.findViewById(R.id.MajorsListViewADmin)
 
         val database = FirebaseDatabase.getInstance()
         val majorRef = database.getReference("majors")

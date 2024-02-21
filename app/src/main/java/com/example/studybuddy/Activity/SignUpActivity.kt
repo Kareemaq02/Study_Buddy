@@ -134,7 +134,7 @@ class SignUpActivity : AppCompatActivity() {
         })
     }
     fun isValidEmail(email: String): Boolean {
-        val pattern = Regex("^[A-Za-z0-9.]+@gju\\.edu\\.jo$")
+        val pattern = Regex("^[A-Za-z0-9.]+@stud\\.hs-bremen\\.de$")
         return pattern.matches(email)
     }
     private fun getEmailFromInput(): String {

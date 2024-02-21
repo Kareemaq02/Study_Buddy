@@ -1,4 +1,5 @@
 package com.example.studybuddy.auth
+import GlobalData
 import android.content.ContentResolver
 import android.provider.Settings
 import com.google.firebase.database.*
@@ -23,6 +24,7 @@ object AdminAuth {
                         isLoggedIn = false
                         break
                     }
+                    GlobalData.userEmail = snapshot.child("email").getValue(String::class.java).toString()
                 }
                 callback.invoke(isLoggedIn)
             }
@@ -45,7 +47,8 @@ object AdminAuth {
                         val adminPassword = childSnapshot.child("password").getValue(String::class.java)
 
                         if (adminPassword.equals(password)&&adminEmail.equals(email)) {
-                            // Match found: email and password are correct
+                            GlobalData.loggedInUserId = childSnapshot.key.toString()
+                            GlobalData.userEmail = adminEmail.toString()
                             callback.invoke(true)
                             return
                         }
