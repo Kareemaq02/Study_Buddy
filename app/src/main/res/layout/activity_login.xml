@@ -54,7 +54,7 @@
             android:paddingTop="5dp"
             android:layout_height="40dp"
             android:inputType="textPersonName"
-            android:hint="Username"
+            android:hint="Email"
             android:textColorHint="#808080"
             android:gravity="center"
             android:ems="15"
