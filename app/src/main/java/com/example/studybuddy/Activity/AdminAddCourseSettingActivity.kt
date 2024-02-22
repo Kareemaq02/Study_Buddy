@@ -165,8 +165,13 @@ class AdminAddCourseSettingActivity : AppCompatActivity() {
                             // Handle any errors that occur
                         }
                     })
-
+                    Toast.makeText(
+                        this@AdminAddCourseSettingActivity,
+                        "Course added successfully",
+                        Toast.LENGTH_SHORT
+                    ).show()
                     dialogInterface.dismiss()
+                    finish()
                 }
 
                 builder.setNegativeButton("No") { dialogInterface: DialogInterface, _: Int ->
@@ -187,14 +192,7 @@ class AdminAddCourseSettingActivity : AppCompatActivity() {
             }
         }
 
-        mergeCourseButton = findViewById(R.id.mergedCoursesButton)
 
-        mergeCourseButton.setOnClickListener {
-
-            val intent = Intent(this, AdminMergedSelectedCourses::class.java)
-            intent.putExtra("majorname", majorSpinner.selectedItem.toString())
-            startActivity(intent)
-        }
 
 
     }

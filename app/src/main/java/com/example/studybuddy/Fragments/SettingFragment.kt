@@ -23,7 +23,6 @@ import java.util.regex.Pattern
 
 class SettingFragment : Fragment() {
 
-    private lateinit var firstNameEditText: EditText
     private lateinit var lastNameEditText: EditText
     private lateinit var emailTextView: TextView
     private lateinit var changePasswordButton: Button

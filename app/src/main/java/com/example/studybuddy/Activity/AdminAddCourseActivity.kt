@@ -249,7 +249,7 @@ class AdminAddCourseActivity : AppCompatActivity() {
                                                                 "Course added successfully",
                                                                 Toast.LENGTH_SHORT
                                                             ).show()
-
+                                                            finish()
                                                         }
                                                         .addOnFailureListener { e ->
                                                             // Error occurred while inserting course

@@ -69,15 +69,6 @@
             android:textSize="20dp"/>
 
     <Button
-            android:id="@+id/mergedCoursesButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="View Selected Merged Courses"
-            android:padding="16dp"
-            android:backgroundTint="#425af5"
-            android:textColor="@color/white"/>
-
-    <Button
             android:id="@+id/addCourseButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
