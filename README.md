@@ -14,9 +14,4 @@ Local Configuration
 Before running the application, ensure that you have set up your local environment correctly. Study Buddy requires a local.properties file in the project directory to specify the location of the Android SDK on your machine.
 Follow the example below to create and configure the local.properties file:
 
-## This file must *NOT* be checked into Version Control Systems,
-# as it contains information specific to your local configuration.
-# Location of the SDK. This is only used by Gradle.
-# For customization when using a Version Control System, please read the
-# header note.
 sdk.dir=C\:\\Users\\LENOVO\\AppData\\Local\\Android\\Sdk
